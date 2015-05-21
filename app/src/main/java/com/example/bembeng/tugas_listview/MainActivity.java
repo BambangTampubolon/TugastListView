@@ -1,5 +1,6 @@
 package com.example.bembeng.tugas_listview;
 
+import android.support.v4.util.SimpleArrayMap;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -37,6 +38,7 @@ public class MainActivity extends ActionBarActivity {
         ListBook.add("Tutorial Pemrograman Android");
 
         adapter= new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,ListBook);
+        ListBook.setAdapter(adapter);
     }
 
 
