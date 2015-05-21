@@ -36,7 +36,7 @@ public class MainActivity extends ActionBarActivity {
 
         listBuku=(ListView) findViewById(R.id.list_output);
         butSimpan=(Button) findViewById(R.id.btn_simpan);
-        editText = (EditText) findViewById(R.id.editText_input);
+        editInput= (EditText) findViewById(R.id.editText_input);
 
         ListBook.add("Laskar Pelangi");
         ListBook.add(" 5 cm");
@@ -60,6 +60,7 @@ public class MainActivity extends ActionBarActivity {
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id){
                 String longClickedItem= (String) parent.getAdapter().getItem(position);
                 Log.d("booklogger", longClickedItem);
+                showDeleteDialog(longClickedItem);
                 return false;
             }
         });
@@ -67,9 +68,11 @@ public class MainActivity extends ActionBarActivity {
         butSimpan.setOnClickListener(new  View.OnClickListener(){
             @Override
             public void onClick(View v){
+                String title = editInput.getText().toString();
                 if(!title.isEmpty()){
                     ListBook.add(title);
                     adapter.notifyDataSetChanged();
+                    editInput.setText("");
                 }else{
                     Toast.makeText(getApplicationContext(),"judul buku wajib diisi", Toast.LENGTH_SHORT).show();
                 }
