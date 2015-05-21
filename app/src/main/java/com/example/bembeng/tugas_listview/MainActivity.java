@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import java.util.*;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -15,6 +16,7 @@ public class MainActivity extends ActionBarActivity {
     ListView listBuku;
     EditText editInput;
 
+    ArrayList<String> ListBook= new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +25,12 @@ public class MainActivity extends ActionBarActivity {
         listBuku=(ListView) findViewById(R.id.list_output);
         butSimpan=(Button) findViewById(R.id.btn_simpan);
         editText = (EditText) findViewById(R.id.editText_input);
+
+        ListBook.add("Laskar Pelangi");
+        ListBook.add(" 5 cm");
+        ListBook.add("Ayat ayat cinta");
+        ListBook.add("Lima Menara");
+        ListBook.add("Tutorial Pemrograman Android");
     }
 
 
