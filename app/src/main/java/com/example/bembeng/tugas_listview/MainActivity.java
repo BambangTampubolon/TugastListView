@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 import java.util.*;
 import android.util.Log;
 import android.widget.ArrayAdapter;
@@ -49,6 +50,27 @@ public class MainActivity extends ActionBarActivity {
             public void  onItemClick(AdapterView<?> parent, View view, int position, long id){
                 String clickedItem= (String) parent.getAdapter().getItem(position);
                 Log.d("booklogger", clickedItem);
+            }
+        });
+
+        ListBook.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id){
+                String longClickedItem= (String) parent.getAdapter().getItem(position);
+                Log.d("booklogger", longClickedItem);
+                return false;
+            }
+        });
+
+        butSimpan.setOnClickListener(new  View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                if(!title.isEmpty()){
+                    ListBook.add(title);
+                    adapter.notifyDataSetChanged();
+                }else{
+                    Toast.makeText(getApplicationContext(),"judul buku wajib diisi", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
