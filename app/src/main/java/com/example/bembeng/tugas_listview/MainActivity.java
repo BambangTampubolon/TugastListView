@@ -5,11 +5,15 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import java.util.*;
+import android.util.Log;
+import android.widget.ArrayAdapter;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -39,6 +43,14 @@ public class MainActivity extends ActionBarActivity {
 
         adapter= new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,ListBook);
         ListBook.setAdapter(adapter);
+
+        ListBook.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void  onItemClick(AdapterView<?> parent, View view, int position, long id){
+                String clickedItem= (String) parent.getAdapter().getItem(position);
+                Log.d("booklogger", clickedItem);
+            }
+        });
     }
 
 
