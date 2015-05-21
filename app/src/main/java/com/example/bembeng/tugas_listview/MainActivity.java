@@ -15,6 +15,8 @@ import android.widget.Toast;
 import java.util.*;
 import android.util.Log;
 import android.widget.ArrayAdapter;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -96,5 +98,25 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private  void showDeleteDialog(final String bookTitle){
+        AlertDialog.Builder deleteDialog= new AlertDialog.Builder(this);
+        deleteDialog.setMessage("anda yakin untuk menghapus \n"+bookTitle+"?");
+        deleteDialog.setPositiveButton("Ya", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                ListBook.remove(bookTitle);
+                adapter.notifyDataSetChanged();
+            }
+        });
+        deleteDialog.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        deleteDialog.show();
     }
 }
