@@ -4,6 +4,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -17,6 +18,9 @@ public class MainActivity extends ActionBarActivity {
     EditText editInput;
 
     ArrayList<String> ListBook= new ArrayList<>();
+
+    ArrayAdapter<String> adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +35,8 @@ public class MainActivity extends ActionBarActivity {
         ListBook.add("Ayat ayat cinta");
         ListBook.add("Lima Menara");
         ListBook.add("Tutorial Pemrograman Android");
+
+        adapter= new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,ListBook);
     }
 
 
